@@ -1,0 +1,19 @@
+    service:
+      name: nginx
+      state: started
+
+- name: install db
+  hosts: db
+  become: yes
+
+  tasks:
+
+  - name: install postgres
+    apt:
+      name: postgresql
+      state: present
+
+  - name: ensure postgresql is up
+    service:
+      name: postgresql
+      state: started
